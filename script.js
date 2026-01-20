@@ -105,23 +105,30 @@ function displayCart() {
 
     document.getElementById("grandTotal").innerText = grandTotal;
 }
+// function updateCartCount() {
+//     let count = 0;
+//     cart.forEach(item => count += item.qty);
 
-function changeQty(index, change) {
-    cart[index].qty += change;
+//     const el = document.getElementById("cartCount");
+//     if (el) el.innerText = count;
+// }
 
-    if (cart[index].qty <= 0) {
-        cart.splice(index, 1);
-    }
+// function changeQty(index, change) {
+//     cart[index].qty += change;
 
-    saveCart();
-    displayCart();
-}
+//     if (cart[index].qty <= 0) {
+//         cart.splice(index, 1);
+//     }
 
-function removeItem(index) {
-    cart.splice(index, 1);
-    saveCart();
-    displayCart();
-}
+//     saveCart();
+//     displayCart();
+// }
+
+// function removeItem(index) {
+//     cart.splice(index, 1);
+//     saveCart();
+//     displayCart();
+// }
 
 function openCart() {
     window.location.href = "cart.html";
@@ -129,3 +136,47 @@ function openCart() {
 
 updateCartCount();
 displayCart();
+
+const cartItems = document.getElementById("cartItems");
+const grandTotal = document.getElementById("grandTotal");
+
+function renderCart() {
+    cartItems.innerHTML = "";
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        const itemTotal = item.price * item.qty;
+        total += itemTotal;
+
+        cartItems.innerHTML += `
+            <tr>
+                <td>${item.name}</td>
+                <td>${item.price}</td>
+                <td>
+                    <input type="number" min="1" value="${item.qty}"
+                        class="qty-input"
+                        onchange="updateQty(${index}, this.value)">
+                </td>
+                <td>${itemTotal}</td>
+                <td>
+                    <button class="remove-btn" onclick="removeItem(${index})">X</button>
+                </td>
+            </tr>
+        `;
+    });
+
+    grandTotal.innerText = total;
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function updateQty(index, qty) {
+    cart[index].qty = parseInt(qty);
+    renderCart();
+}
+
+function removeItem(index) {
+    cart.splice(index, 1);
+    renderCart();
+}
+
+renderCart();

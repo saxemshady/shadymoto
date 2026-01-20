@@ -32,9 +32,10 @@
             <h1 style="text-align:center; color:black;">Your Cart</h1>
         </div>
     </section>
+    <section class="cart-section">
+<div id="cart-items"></div>
+<h2 id="total"></h2>
 
-
-<section class="cart-section">
 <div class="cart-container">
 
     <table class="cart-table">
@@ -50,16 +51,64 @@
         <tbody id="cartItems"></tbody>
     </table>
 
-    
-
-    <div style="text-align:center; margin-top:20px;">
+    <div class="checkout-container">
         <button class="checkout-btn">Proceed to Checkout</button>
     </div>
-<h2 class="cart-total">
+
+    <h2 class="cart-total">
         Total: <span id="grandTotal">0</span> Rs.
     </h2>
 </div>
+
+<!-- <script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const cartItems = document.getElementById("cartItems");
+const grandTotal = document.getElementById("grandTotal");
+
+function renderCart() {
+    cartItems.innerHTML = "";
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        const itemTotal = item.price * item.qty;
+        total += itemTotal;
+
+        cartItems.innerHTML += `
+            <tr>
+                <td>${item.name}</td>
+                <td>${item.price}</td>
+                <td>
+                    <input type="number" min="1" value="${item.qty}"
+                        class="qty-input"
+                        onchange="updateQty(${index}, this.value)">
+                </td>
+                <td>${itemTotal}</td>
+                <td>
+                    <button class="remove-btn" onclick="removeItem(${index})">X</button>
+                </td>
+            </tr>
+        `;
+    });
+
+    grandTotal.innerText = total;
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function updateQty(index, qty) {
+    cart[index].qty = parseInt(qty);
+    renderCart();
+}
+
+function removeItem(index) {
+    cart.splice(index, 1);
+    renderCart();
+}
+
+renderCart();
+</script> -->
 </section>
+
+
 <footer>
     <p>© 2025 Shady Moto. All rights reserved.</p><br>
         <p>Follow us</p>
@@ -69,6 +118,6 @@
         <a href="https://tiktok.com/@ target="_blank">TikTok</a>
     </div>
 </footer>
-<script src="js/cart.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

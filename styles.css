@@ -449,12 +449,10 @@ footer .social-links a:hover {
 }
 .cart-container {
     max-width: 900px;
-    margin: 40px auto;
-    background: #111;
-    padding: 2rem 1rem;
-    border-radius: 10px;
-    color: white;
-    align-items: center;
+    margin: auto;
+    background:seashell;
+    padding: 20px;
+    border-radius: 6px;
 }
 
 .cart-table {
@@ -464,26 +462,56 @@ footer .social-links a:hover {
 
 .cart-table th,
 .cart-table td {
+    border: 1px solid black;
     padding: 12px;
     text-align: center;
-    border-bottom: 1px solid #333;
 }
 
 .cart-table th {
-    color: #ff4500;
-}
-
-.cart-btn {
-    padding: 5px 10px;
-    background: #ff4500;
-    border: none;
+    background-color: black;
     color: white;
-    cursor: pointer;
-    border-radius: 5px;
 }
 
-.cart-btn.remove {
-    background: crimson;
+.qty-input {
+    width: 60px;
+    padding: 5px;
+    text-align: center;
+}
+
+.remove-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.remove-btn:hover {
+   background-color: var(--accent-color);
+    box-shadow: 0 5px 15px rgba(212, 33, 61, 0.3);
+}
+
+.checkout-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.checkout-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+   
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.checkout-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 33, 61, 0.3);
 }
 
 .cart-total {
@@ -491,15 +519,6 @@ footer .social-links a:hover {
     margin-top: 20px;
 }
 
-.checkout-btn {
-    padding: 12px 30px;
-    background: #ff4500;
-    border: none;
-    color: white;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-}
 .hero1 {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: var(--text-light);
