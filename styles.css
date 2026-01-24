@@ -566,14 +566,19 @@ footer .social-links a:hover {
     margin-top: 15px;
    
 }
-
-.checkout-table th,
 .checkout-table td {
     border-bottom: 1px solid #ddd;
     padding: 10px;
+    
     text-align: center;
 }
-
+.checkout-table th {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+}
 .checkout-total {
     margin-top: 15px;
     font-size: 18px;
