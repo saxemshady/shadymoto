@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout - Shady Moto</title>
-
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
+<script  src="script.js" ></script>
 <!-- NAVBAR -->
 <nav>
     <div class="nav-container">
@@ -130,55 +130,5 @@
         <a href="https://tiktok.com/@shadymoto" target="_blank">TikTok</a>
     </div>
 </footer>
-
-<!-- SCRIPT -->
-<script>
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const tableBody = document.getElementById("checkoutItems");
-    const grandTotalEl = document.getElementById("grandTotal");
-
-    let grandTotal = 0;
-
-    cart.forEach(item => {
-        const total = item.price * item.qty;
-        grandTotal += total;
-
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td>${item.name}</td>
-            <td>${item.qty}</td>
-            <td>Rs. ${item.price}</td>
-            <td>Rs. ${total}</td>
-        `;
-        tableBody.appendChild(row);
-    });
-
-    grandTotalEl.innerText = "Grand Total: Rs. " + grandTotal;
-
-    
-function placeOrder(event) {
-    event.preventDefault();
-
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    if (cart.length === 0) {
-        alert("Your cart is empty!");
-        return;
-    }
-
-    // show popup
-    document.getElementById("popup").style.display = "flex";
-
-    // clear cart
-    localStorage.removeItem("cart");
-}
-
-function closePopup() {
-    window.location.href = "index.html";
-}
-
-
-</script>
-<script src="script.js"></script>
 </body>
 </html>
